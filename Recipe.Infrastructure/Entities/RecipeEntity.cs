@@ -8,5 +8,6 @@ namespace Recipe.Infrastructure.Entities
         public string? Description { get; set; }
 
         public List<RecipeIngredientEntity>? RecipeIngredients { get; set; }
+        public List<CategoryEntity>? Categories { get; set; }
     }
 }

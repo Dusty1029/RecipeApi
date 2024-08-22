@@ -19,6 +19,14 @@ namespace Recipe.Infrastructure.Configurations
 
             builder.Property(x => x.Description)
                    .IsRequired(false);
+
+            builder.HasMany(x => x.Categories)
+                   .WithMany(x => x.Recipes)
+                   .UsingEntity($"{nameof(RecipeEntity).ToTableName()}{nameof(CategoryEntity).ToTableName()}");
+
+            builder.HasMany(x => x.RecipeIngredients)
+                   .WithOne(x => x.Recipe)
+                   .HasForeignKey(x => x.RecipeId);
         }
     }
 }
